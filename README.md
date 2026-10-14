@@ -1,4 +1,4 @@
-# Sistema de Gestión de Inventario Biomédico y Diagnóstico Predictivo
+# Sistema de Gestión de Inventario Biomédico 
 
 Sistema web desarrollado con FastAPI, MongoDB Atlas y JavaScript Vanilla para el control de equipamiento médico hospitalario y la simulación de análisis frecuencial de sensores ejecutado de forma no bloqueante mediante asyncio.to_thread().
 
