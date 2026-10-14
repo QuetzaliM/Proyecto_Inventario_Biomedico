@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario Biomédico</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+        <div>
+            <h1>Inventario Biomédico</h1>
+            <p>Gestión y control de equipos médicos con diagnóstico predictivo</p>
+        </div>
+    </header>
+
+    <main class="contenedor">
+
+        <!-- SECCIÓN 1: FORMULARIO DE REGISTRO / EDICIÓN -->
+        <section class="tarjeta">
+            <h2>Registrar equipo biomédico</h2>
+
+            <form id="formulario-equipo">
+
+                <label for="nombre">Nombre del equipo</label>
+                <input id="nombre" name="nombre" type="text"
+                       placeholder="Ej. Electrocardiógrafo 12 Canales"
+                       maxlength="100" required>
+
+                <label for="area_hospitalaria">Área hospitalaria</label>
+                <input id="area_hospitalaria" name="area_hospitalaria" type="text"
+                       placeholder="Ej. UCI, Cardiología, Urgencias"
+                       maxlength="50" required>
+
+                <label for="horas_uso">Horas acumuladas de uso</label>
+                <input id="horas_uso" name="horas_uso" type="number" step="0.1"
+                       placeholder="Ej. 1250.5" min="0" required>
+
+                <label for="dias_desde_ultimo_mantenimiento">Días desde el último mantenimiento</label>
+                <input id="dias_desde_ultimo_mantenimiento" name="dias_desde_ultimo_mantenimiento" type="number"
+                       placeholder="Ej. 45" min="0" required>
+
+                <button type="submit">Registrar equipo</button>
+
+            </form>
+
+            <p id="mensaje" role="status" aria-live="polite"></p>
+        </section>
+
+        <!-- SECCIÓN 2: LISTADO DE EQUIPOS Y ACCIONES -->
+        <section class="tarjeta">
+            <div class="titulo-listado">
+                <div>
+                    <h2>Equipos registrados</h2>
+                    <p>Consulta los equipos almacenados en MongoDB Atlas.</p>
+                </div>
+
+                <button id="btn-actualizar" type="button">
+                    Actualizar lista
+                </button>
+            </div>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Equipo</th>
+                            <th>Área Hospitalaria</th>
+                            <th>Horas Uso</th>
+                            <th>Días Mantenimiento</th>
+                            <th>Estado Predictivo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="lista-equipos">
+                        <tr>
+                            <td colspan="6">Cargando equipos...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: REPORTE GENERAL Y DIAGNÓSTICO -->
+        <section class="tarjeta">
+            <h2>Reporte del inventario y calibración</h2>
+
+            <p>
+                Consulta un resumen de los equipos registrados o ejecuta el diagnóstico frecuencial
+                de sensores ejecutado de forma no bloqueante con <code>asyncio.to_thread()</code>.
+            </p>
+
+            <button id="btn-reporte" type="button">
+                Generar reporte
+            </button>
+
+            <pre id="resultado-reporte" style="display: none; background-color: #0f172a; color: #38bdf8; padding: 15px; border-radius: 6px; overflow-x: auto; margin-top: 15px; font-family: monospace;"></pre>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Proyecto académico de gestión de equipos biomédicos | CUGDL</p>
+    </footer>
+
+    <script src="/static/app.js"></script>
+
+</body>
+</html>
